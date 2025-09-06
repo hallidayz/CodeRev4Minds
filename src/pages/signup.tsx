@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -25,24 +25,58 @@ import {
   EyeIcon,
   EyeOffIcon,
   CheckIcon,
+  LoaderIcon,
 } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
 
 export function Signup() {
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
-    company: "",
-    teamSize: "",
     password: "",
+    confirmPassword: "",
+    organizationName: "",
+    teamSize: "",
     agreeToTerms: false,
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const { signup } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle signup logic here
-    console.log("Signup attempt:", formData);
+    setIsLoading(true);
+    setError("");
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Passwords do not match");
+      setIsLoading(false);
+      return;
+    }
+
+    if (!formData.agreeToTerms) {
+      setError("Please agree to the terms and conditions");
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      await signup({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        organizationName: formData.organizationName,
+        teamSize: formData.teamSize,
+      });
+      navigate("/dashboard");
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Signup failed");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -106,29 +140,16 @@ export function Signup() {
             </CardHeader>
             <CardContent className="space-y-4">
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="firstName">First name</Label>
-                    <Input
-                      id="firstName"
-                      name="firstName"
-                      placeholder="John"
-                      value={formData.firstName}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="lastName">Last name</Label>
-                    <Input
-                      id="lastName"
-                      name="lastName"
-                      placeholder="Doe"
-                      value={formData.lastName}
-                      onChange={handleInputChange}
-                      required
-                    />
-                  </div>
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full name</Label>
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="John Doe"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    required
+                  />
                 </div>
 
                 <div className="space-y-2">
@@ -145,12 +166,12 @@ export function Signup() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="company">Company</Label>
+                  <Label htmlFor="organizationName">Organization</Label>
                   <Input
-                    id="company"
-                    name="company"
-                    placeholder="Your company name"
-                    value={formData.company}
+                    id="organizationName"
+                    name="organizationName"
+                    placeholder="Your organization name"
+                    value={formData.organizationName}
                     onChange={handleInputChange}
                     required
                   />
@@ -205,6 +226,40 @@ export function Signup() {
                   </div>
                 </div>
 
+                <div className="space-y-2">
+                  <Label htmlFor="confirmPassword">Confirm Password</Label>
+                  <div className="relative">
+                    <Input
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Confirm your password"
+                      value={formData.confirmPassword}
+                      onChange={handleInputChange}
+                      required
+                    />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOffIcon className="h-4 w-4 text-muted-foreground" />
+                      ) : (
+                        <EyeIcon className="h-4 w-4 text-muted-foreground" />
+                      )}
+                    </Button>
+                  </div>
+                </div>
+
+                {error && (
+                  <div className="text-red-600 text-sm text-center">
+                    {error}
+                  </div>
+                )}
+
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="terms"
@@ -231,10 +286,16 @@ export function Signup() {
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={!formData.agreeToTerms}
-                  asChild
+                  disabled={!formData.agreeToTerms || isLoading}
                 >
-                  <Link to="/dashboard">Create Account</Link>
+                  {isLoading ? (
+                    <>
+                      <LoaderIcon className="w-4 h-4 mr-2 animate-spin" />
+                      Creating Account...
+                    </>
+                  ) : (
+                    "Create Account"
+                  )}
                 </Button>
               </form>
 

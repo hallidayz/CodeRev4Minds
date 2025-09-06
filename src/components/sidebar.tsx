@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   LayoutDashboardIcon,
   GitBranchIcon,
@@ -8,6 +9,8 @@ import {
   SettingsIcon,
   LogOutIcon,
   BrainIcon,
+  PlusIcon,
+  UsersIcon,
 } from "lucide-react";
 
 const navigation = [
@@ -22,9 +25,20 @@ const navigation = [
     icon: GitBranchIcon,
   },
   {
+    name: "Connect Repos",
+    href: "/repositories/connect",
+    icon: PlusIcon,
+  },
+  {
     name: "Analytics",
     href: "/analytics",
     icon: BarChart3Icon,
+  },
+  {
+    name: "Team Management",
+    href: "/team",
+    icon: UsersIcon,
+    adminOnly: true,
   },
   {
     name: "Settings",
@@ -35,6 +49,14 @@ const navigation = [
 
 export function Sidebar() {
   const location = useLocation();
+  const { user, logout } = useAuth();
+
+  const filteredNavigation = navigation.filter(item => {
+    if (item.adminOnly && user?.role !== 'admin') {
+      return false;
+    }
+    return true;
+  });
 
   return (
     <div className="flex h-full w-64 flex-col bg-slate-900">
@@ -50,7 +72,7 @@ export function Sidebar() {
 
       {/* Navigation */}
       <nav className="flex-1 space-y-1 px-3 py-4">
-        {navigation.map((item) => {
+        {filteredNavigation.map((item) => {
           const isActive = location.pathname === item.href;
           return (
             <Link key={item.name} to={item.href}>
@@ -74,23 +96,24 @@ export function Sidebar() {
       {/* User Section */}
       <div className="border-t border-slate-800 p-4">
         <div className="flex items-center space-x-3 mb-3">
-          <img
-            src="https://github.com/yahyabedirhan.png"
-            alt="User"
-            className="w-8 h-8 rounded-full"
-          />
+          <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+            <span className="text-blue-600 font-semibold text-sm">
+              {user?.name?.split(' ').map(n => n[0]).join('') || 'U'}
+            </span>
+          </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-medium text-white truncate">
-              Sarah Chen
+              {user?.name || 'User'}
             </p>
             <p className="text-xs text-slate-400 truncate">
-              sarah@techflow.com
+              {user?.email || 'user@example.com'}
             </p>
           </div>
         </div>
         <Button
           variant="ghost"
           size="sm"
+          onClick={logout}
           className="w-full justify-start text-slate-300 hover:bg-slate-800 hover:text-white"
         >
           <LogOutIcon className="mr-3 h-4 w-4" />
