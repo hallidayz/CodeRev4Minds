@@ -234,7 +234,7 @@ export function IntegrationSection() {
                   <div className="w-3 h-3 bg-green-400 rounded-full"></div>
                 </div>
                 <div className="bg-slate-800 rounded-lg p-4 font-mono text-sm">
-                  <div className="text-green-400">$ npm install @codeai/cli</div>
+                  <div className="text-green-400">$ npm install @coderev4minds/cli</div>
                   <div className="text-slate-400 mt-2">
                     ✓ Installing dependencies...
                   </div>

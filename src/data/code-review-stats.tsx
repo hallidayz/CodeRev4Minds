@@ -24,6 +24,7 @@ export const codeReviewStats = {
         "Email support",
         "Weekly reports",
       ],
+      popular: false,
     },
     professional: {
       name: "Professional",
@@ -50,6 +51,7 @@ export const codeReviewStats = {
         "Advanced security",
         "SLA guarantees",
       ],
+      popular: false,
     },
   },
 

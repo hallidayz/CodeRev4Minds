@@ -44,7 +44,7 @@ export function Sidebar() {
           <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
             <BrainIcon className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold text-white">CodeAI</span>
+          <span className="text-xl font-bold text-white">CodeRev4Minds</span>
         </div>
       </div>
 

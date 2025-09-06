@@ -1,5 +1,5 @@
 {
-  "name": "codeai-react-app",
+  "name": "coderev4minds-react-app",
   "version": "1.0.0",
   "description": "AI-powered code review automation tool - Complete React application",
   "private": true,
@@ -49,6 +49,6 @@
     "typescript",
     "saas"
   ],
-  "author": "CodeAI Team",
+  "author": "CodeRev4Minds Team",
   "license": "MIT"
 }

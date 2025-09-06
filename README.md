@@ -1,4 +1,4 @@
-# CodeAI - AI-Powered Code Review Automation Tool
+# CodeRev4Minds - AI-Powered Code Review Automation Tool
 
 A comprehensive React application showcasing an AI-powered code review automation platform that helps engineering teams save 6.4 hours weekly while maintaining 95% accuracy and reducing false positives to under 5%.
 
@@ -38,7 +38,7 @@ A comprehensive React application showcasing an AI-powered code review automatio
 ## 📁 Project Structure
 
 ```
-codeai-react-app/
+coderev4minds-react-app/
 ├── public/
 ├── src/
 │   ├── components/
@@ -90,7 +90,7 @@ codeai-react-app/
 1. **Clone or download the project**
    ```bash
    # If you have the project files, navigate to the directory
-   cd codeai-react-app
+   cd coderev4minds-react-app
    ```
 
 2. **Install dependencies**

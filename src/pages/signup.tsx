@@ -69,7 +69,7 @@ export function Signup() {
             <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center">
               <CodeIcon className="w-7 h-7" />
             </div>
-            <span className="text-3xl font-bold">CodeAI</span>
+            <span className="text-3xl font-bold">CodeRev4Minds</span>
           </div>
 
           <h1 className="text-4xl font-bold mb-6">

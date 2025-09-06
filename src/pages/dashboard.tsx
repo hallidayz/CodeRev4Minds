@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { DashboardStats } from "@/components/dashboard-stats";
-import { dashboardData, repositories } from "@/data/dashboard-data";
+import { repositories } from "@/data/dashboard-data";
 import { Link } from "react-router-dom";
 import {
   ArrowRightIcon,

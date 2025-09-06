@@ -29,7 +29,7 @@ export function DashboardStats() {
       title: "Time Saved",
       value: `${dashboardData.stats.timeSaved}hrs`,
       change: "per week",
-      changeType: "neutral" as const,
+      changeType: "positive" as const,
       icon: ClockIcon,
       description: "per developer",
     },

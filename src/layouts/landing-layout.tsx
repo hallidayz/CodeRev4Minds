@@ -68,7 +68,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
               <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                 <BrainIcon className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-slate-900">CodeAI</span>
+              <span className="text-xl font-bold text-slate-900">CodeRev4Minds</span>
               <Badge
                 variant="secondary"
                 className="hidden sm:inline-flex text-xs"
@@ -161,7 +161,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
                   <BrainIcon className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">CodeAI</span>
+                <span className="text-xl font-bold">CodeRev4Minds</span>
               </div>
               <p className="text-slate-400 mb-6 max-w-sm">
                 AI-powered code review automation that saves engineering teams
@@ -261,7 +261,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
           {/* Bottom Bar */}
           <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © 2024 CodeAI. All rights reserved.
+              © 2024 CodeRev4Minds. All rights reserved.
             </p>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <Badge

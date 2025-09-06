@@ -28,7 +28,7 @@ export function PricingSection() {
 
           {/* Pricing Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {pricingTiers.map((tier, index) => (
+            {pricingTiers.map((tier) => (
               <Card
                 key={tier.name}
                 className={`relative border-2 transition-all duration-300 hover:shadow-xl ${

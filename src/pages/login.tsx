@@ -41,7 +41,7 @@ export function Login() {
           <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
             <CodeIcon className="w-6 h-6 text-white" />
           </div>
-          <span className="text-2xl font-bold">CodeAI</span>
+          <span className="text-2xl font-bold">CodeRev4Minds</span>
         </div>
 
         <Card>

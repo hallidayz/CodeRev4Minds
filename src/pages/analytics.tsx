@@ -14,7 +14,6 @@ import {
 import { analyticsData, dashboardData } from "@/data/dashboard-data";
 import {
   TrendingUpIcon,
-  TrendingDownIcon,
   AlertTriangleIcon,
   CheckCircleIcon,
   ClockIcon,
@@ -253,7 +252,7 @@ export function Analytics() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {analyticsData.teamPerformance.map((member, index) => (
+            {analyticsData.teamPerformance.map((member) => (
               <div
                 key={member.name}
                 className="flex items-center justify-between p-4 rounded-lg bg-muted/50"
