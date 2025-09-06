@@ -1,8 +1,8 @@
 import { useAuth } from '@/contexts/AuthContext';
 
 // API Configuration
-const API_BASE_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001/api';
-const WS_BASE_URL = process.env.REACT_APP_WS_URL || 'ws://localhost:3001';
+const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001/api';
+const WS_BASE_URL = (import.meta as any).env?.VITE_WS_URL || 'ws://localhost:3001';
 
 // Types
 export interface ApiResponse<T = any> {

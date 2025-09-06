@@ -1,4 +1,3 @@
-import { useAuth } from '@/contexts/AuthContext';
 
 // Types
 export interface Repository {
@@ -78,7 +77,7 @@ export class RepositoryService {
   private token: string | null;
 
   constructor() {
-    this.baseUrl = process.env.REACT_APP_API_URL || '/api';
+    this.baseUrl = (import.meta as any).env?.VITE_API_URL || '/api';
     this.token = localStorage.getItem('coderev4minds_token');
   }
 
@@ -262,7 +261,7 @@ export class RepositoryService {
     callback: (update: { type: string; data: any }) => void
   ): () => void {
     // WebSocket connection for real-time updates
-    const ws = new WebSocket(`${process.env.REACT_APP_WS_URL || 'ws://localhost:8080'}/repositories/${repositoryId}`);
+    const ws = new WebSocket(`${(import.meta as any).env?.VITE_WS_URL || 'ws://localhost:8080'}/repositories/${repositoryId}`);
     
     ws.onmessage = (event) => {
       const update = JSON.parse(event.data);

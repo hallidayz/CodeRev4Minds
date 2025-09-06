@@ -17,8 +17,6 @@ import {
   MailIcon, 
   ShieldIcon,
   TrashIcon,
-  EditIcon,
-  CheckIcon,
   XIcon
 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
