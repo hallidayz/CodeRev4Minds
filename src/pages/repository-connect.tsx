@@ -156,7 +156,7 @@ export function RepositoryConnect() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-slate-900 mb-2">
+          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
             Connect Repositories
           </h1>
           <p className="text-slate-600">
@@ -274,7 +274,7 @@ export function RepositoryConnect() {
                   .filter(p => p.isConnected && p.repositories.length > 0)
                   .map((provider) => (
                     <div key={provider.provider}>
-                      <h3 className="text-lg font-semibold text-slate-900 mb-3 flex items-center gap-2">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-3 flex items-center gap-2">
                         {getProviderIcon(provider.provider)}
                         {provider.provider.charAt(0).toUpperCase() + provider.provider.slice(1)} Repositories
                       </h3>
@@ -291,7 +291,7 @@ export function RepositoryConnect() {
                           >
                             <div className="flex items-start justify-between">
                               <div className="flex-1">
-                                <h4 className="font-medium text-slate-900 truncate">
+                                <h4 className="font-medium text-slate-900 dark:text-white truncate">
                                   {repo.name}
                                 </h4>
                                 <p className="text-sm text-slate-600 truncate">
@@ -360,7 +360,7 @@ export function RepositoryConnect() {
           <CardContent>
             <div className="grid gap-4 md:grid-cols-2">
               <div>
-                <h4 className="font-medium text-slate-900 mb-2">Creating Access Tokens</h4>
+                <h4 className="font-medium text-slate-900 dark:text-white mb-2">Creating Access Tokens</h4>
                 <ul className="text-sm text-slate-600 space-y-1">
                   <li>• GitHub: Go to Settings → Developer settings → Personal access tokens</li>
                   <li>• GitLab: Go to User Settings → Access Tokens</li>
@@ -368,7 +368,7 @@ export function RepositoryConnect() {
                 </ul>
               </div>
               <div>
-                <h4 className="font-medium text-slate-900 mb-2">Required Permissions</h4>
+                <h4 className="font-medium text-slate-900 dark:text-white mb-2">Required Permissions</h4>
                 <ul className="text-sm text-slate-600 space-y-1">
                   <li>• Repository read access</li>
                   <li>• Webhook creation (for automatic scans)</li>

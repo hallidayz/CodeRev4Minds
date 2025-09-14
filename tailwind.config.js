@@ -18,10 +18,17 @@ export default {
     },
     extend: {
       colors: {
-        // Brand Colors
-        'authority-navy': '#02295b',
-        'achievement-gold': '#fda700',
-        'strategic-forest': '#2c5f41',
+        // Core Brand Colors
+        'authority-navy': 'hsl(var(--authority-navy))',
+        'achievement-gold': 'hsl(var(--achievement-gold))',
+        'strategic-forest': 'hsl(var(--strategic-forest))',
+        'steel-insight': 'hsl(var(--steel-insight))',
+        'creative-depth': 'hsl(var(--creative-depth))',
+        'executive-bronze': 'hsl(var(--executive-bronze))',
+        'executive-depth': 'hsl(var(--executive-depth))',
+        'refined-bronze': 'hsl(var(--refined-bronze))',
+        'success-forest': 'hsl(var(--success-forest))',
+        'pure-foundation': 'hsl(var(--pure-foundation))',
         
         // Brand Color Variations
         'navy': {
@@ -59,6 +66,42 @@ export default {
           700: '#203f2d',
           800: '#1a2f23',
           900: '#141f19',
+        },
+        'steel': {
+          50: '#f4f6f7',
+          100: '#e3e8ea',
+          200: '#c7d1d6',
+          300: '#a0b0b8',
+          400: '#7a8d97',
+          500: '#4a5c6a',
+          600: '#3d4b56',
+          700: '#333e47',
+          800: '#2c343a',
+          900: '#262c30',
+        },
+        'creative': {
+          50: '#f7f5f8',
+          100: '#ede8ed',
+          200: '#d9d0db',
+          300: '#c1b2c4',
+          400: '#a894ac',
+          500: '#6b4e71',
+          600: '#5a415e',
+          700: '#4a354e',
+          800: '#3d2c40',
+          900: '#332636',
+        },
+        'bronze': {
+          50: '#fdf9f0',
+          100: '#faf1d9',
+          200: '#f4e2b3',
+          300: '#ecd08c',
+          400: '#e1bc66',
+          500: '#8b6914',
+          600: '#75570f',
+          700: '#5f450c',
+          800: '#4a3509',
+          900: '#3d2c07',
         },
         
         // System Colors

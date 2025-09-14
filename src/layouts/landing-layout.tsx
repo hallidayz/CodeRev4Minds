@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ThemeToggle } from "@/contexts/ThemeContext";
 import {
-  BrainIcon,
   MenuIcon,
   XIcon,
   TwitterIcon,
@@ -10,6 +9,7 @@ import {
   GithubIcon,
   ArrowRightIcon,
 } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -66,10 +66,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-authority-navy rounded-lg flex items-center justify-center">
-                <BrainIcon className="w-5 h-5 text-white" />
-              </div>
-              <span className="text-xl font-bold text-slate-900">Code Rev Minds</span>
+              <Logo size="md" variant="default" />
               <Badge
                 variant="secondary"
                 className="hidden sm:inline-flex text-xs"
@@ -160,10 +157,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-authority-navy rounded-lg flex items-center justify-center">
-                  <BrainIcon className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold">Code Rev Minds</span>
+                <Logo size="md" variant="light" />
               </div>
               <p className="text-slate-400 mb-6 max-w-sm">
                 AI-powered code review automation that saves engineering teams

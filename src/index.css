@@ -4,13 +4,36 @@
 
 @layer base {
   :root {
-    /* Brand Colors */
+    /* Core Brand Colors */
+    --color-authority-navy: #02295b; /* Primary brand, headers, trustworthy foundations */
+    --color-achievement-gold: #fda700; /* Success indicators, CTAs, achievement highlights */
+    --color-strategic-forest: #2c5f41; /* Growth-minded creativity & strategic innovation */
+    --color-steel-insight: #4a5c6a; /* Strategic thinking */
+    --color-creative-depth: #6b4e71; /* Original option */
+    
+    /* Alternative Creative Colors */
+    --color-executive-bronze: #8b6914; /* Sophisticated innovation */
+    
+    /* Supporting Palette */
+    --color-executive-depth: #1b3448; /* Used for dark mode, premium depth */
+    --color-refined-bronze: #8b7355; /* Sophisticated accents */
+    --color-success-forest: #4a6741; /* Growth, achievement states */
+    --color-pure-foundation: #f6f7f9; /* Used for light mode backgrounds, clarity */
+    
+    /* HSL Values for Tailwind */
     --authority-navy: 210 100% 18%;
     --achievement-gold: 42 100% 50%;
     --strategic-forest: 150 37% 28%;
+    --steel-insight: 200 18% 35%;
+    --creative-depth: 300 16% 35%;
+    --executive-bronze: 45 75% 30%;
+    --executive-depth: 210 50% 15%;
+    --refined-bronze: 35 25% 40%;
+    --success-forest: 100 20% 35%;
+    --pure-foundation: 220 20% 97%;
     
-    /* System Colors */
-    --background: 0 0% 100%;
+    /* System Colors - Light Mode */
+    --background: 220 20% 97%;
     --foreground: 210 100% 18%;
     --card: 0 0% 100%;
     --card-foreground: 210 100% 18%;
@@ -20,54 +43,61 @@
     --primary-foreground: 0 0% 100%;
     --secondary: 150 37% 28%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 210 40% 96%;
+    --muted: 220 20% 95%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 42 100% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 220 20% 90%;
+    --input: 220 20% 90%;
     --ring: 210 100% 18%;
     --chart-1: 210 100% 18%;
     --chart-2: 42 100% 50%;
     --chart-3: 150 37% 28%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-4: 200 18% 35%;
+    --chart-5: 300 16% 35%;
     --radius: 0.5rem;
   }
 
   .dark {
     /* Brand Colors - Dark Mode */
-    --authority-navy: 210 100% 25%;
+    --authority-navy: 210 50% 25%;
     --achievement-gold: 42 100% 60%;
-    --strategic-forest: 150 37% 35%;
+    --strategic-forest: 100 20% 45%;
+    --steel-insight: 200 18% 45%;
+    --creative-depth: 300 16% 45%;
+    --executive-bronze: 45 75% 40%;
+    --executive-depth: 210 50% 15%;
+    --refined-bronze: 35 25% 50%;
+    --success-forest: 100 20% 45%;
+    --pure-foundation: 220 20% 5%;
     
     /* System Colors - Dark Mode */
-    --background: 210 100% 5%;
+    --background: 210 50% 5%;
     --foreground: 0 0% 100%;
-    --card: 210 100% 8%;
+    --card: 210 50% 8%;
     --card-foreground: 0 0% 100%;
-    --popover: 210 100% 8%;
+    --popover: 210 50% 8%;
     --popover-foreground: 0 0% 100%;
     --primary: 42 100% 60%;
-    --primary-foreground: 210 100% 5%;
-    --secondary: 150 37% 35%;
+    --primary-foreground: 210 50% 5%;
+    --secondary: 100 20% 45%;
     --secondary-foreground: 0 0% 100%;
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 210 50% 15%;
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 42 100% 60%;
-    --accent-foreground: 210 100% 5%;
+    --accent-foreground: 210 50% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
+    --border: 210 50% 15%;
+    --input: 210 50% 15%;
     --ring: 42 100% 60%;
-    --chart-1: 210 100% 25%;
+    --chart-1: 210 50% 25%;
     --chart-2: 42 100% 60%;
-    --chart-3: 150 37% 35%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-3: 100 20% 45%;
+    --chart-4: 200 18% 45%;
+    --chart-5: 300 16% 45%;
   }
 }
 

@@ -148,7 +148,7 @@ export function Docs() {
               <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
                 <BookOpenIcon className="w-7 h-7 text-white" />
               </div>
-              <h1 className="text-4xl font-bold text-slate-900">Documentation</h1>
+              <h1 className="text-4xl font-bold text-slate-900 dark:text-white">Documentation</h1>
             </div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Everything you need to integrate Code Rev Minds into your development workflow
@@ -173,7 +173,7 @@ export function Docs() {
                       </div>
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                      <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
                         {step.title}
                       </h3>
                       <p className="text-slate-600 mb-3">
@@ -225,7 +225,7 @@ export function Docs() {
                       >
                         {endpoint.method}
                       </Badge>
-                      <code className="text-slate-900 font-mono">
+                      <code className="text-slate-900 dark:text-white font-mono">
                         {endpoint.endpoint}
                       </code>
                     </div>
@@ -422,7 +422,7 @@ team:
 
           {/* Support */}
           <div className="text-center mt-12">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
               Need Help?
             </h2>
             <p className="text-slate-600 mb-6">

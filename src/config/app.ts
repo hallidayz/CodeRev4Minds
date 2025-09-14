@@ -32,9 +32,21 @@ export const APP_CONFIG = {
 
   // Brand colors
   colors: {
+    // Core Brand Colors
     authorityNavy: '#02295b',
     achievementGold: '#fda700',
     strategicForest: '#2c5f41',
+    steelInsight: '#4a5c6a',
+    creativeDepth: '#6b4e71',
+    executiveBronze: '#8b6914',
+    
+    // Supporting Palette
+    executiveDepth: '#1b3448',
+    refinedBronze: '#8b7355',
+    successForest: '#4a6741',
+    pureFoundation: '#f6f7f9',
+    
+    // Color Variations
     navy: {
       50: '#f0f4f8',
       100: '#d9e2ec',
@@ -70,6 +82,42 @@ export const APP_CONFIG = {
       700: '#203f2d',
       800: '#1a2f23',
       900: '#141f19',
+    },
+    steel: {
+      50: '#f4f6f7',
+      100: '#e3e8ea',
+      200: '#c7d1d6',
+      300: '#a0b0b8',
+      400: '#7a8d97',
+      500: '#4a5c6a',
+      600: '#3d4b56',
+      700: '#333e47',
+      800: '#2c343a',
+      900: '#262c30',
+    },
+    creative: {
+      50: '#f7f5f8',
+      100: '#ede8ed',
+      200: '#d9d0db',
+      300: '#c1b2c4',
+      400: '#a894ac',
+      500: '#6b4e71',
+      600: '#5a415e',
+      700: '#4a354e',
+      800: '#3d2c40',
+      900: '#332636',
+    },
+    bronze: {
+      50: '#fdf9f0',
+      100: '#faf1d9',
+      200: '#f4e2b3',
+      300: '#ecd08c',
+      400: '#e1bc66',
+      500: '#8b6914',
+      600: '#75570f',
+      700: '#5f450c',
+      800: '#4a3509',
+      900: '#3d2c07',
     },
   },
 

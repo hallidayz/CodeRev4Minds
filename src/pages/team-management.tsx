@@ -202,7 +202,7 @@ export function TeamManagement() {
         <div className="mb-8">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-slate-900 mb-2">
+              <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
                 Team Management
               </h1>
               <p className="text-slate-600">
@@ -231,19 +231,19 @@ export function TeamManagement() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
                 <Label className="text-sm font-medium text-slate-600">Organization</Label>
-                <p className="text-lg font-semibold text-slate-900">
+                <p className="text-lg font-semibold text-slate-900 dark:text-white">
                   {organization?.name || 'Your Organization'}
                 </p>
               </div>
               <div>
                 <Label className="text-sm font-medium text-slate-600">Plan</Label>
-                <p className="text-lg font-semibold text-slate-900 capitalize">
+                <p className="text-lg font-semibold text-slate-900 dark:text-white capitalize">
                   {organization?.plan || 'Professional'}
                 </p>
               </div>
               <div>
                 <Label className="text-sm font-medium text-slate-600">Team Size</Label>
-                <p className="text-lg font-semibold text-slate-900">
+                <p className="text-lg font-semibold text-slate-900 dark:text-white">
                   {teamMembers.length} / {organization?.maxUsers || 10} members
                 </p>
               </div>
@@ -329,7 +329,7 @@ export function TeamManagement() {
                   >
                     <div className="flex items-center gap-4">
                       <div>
-                        <p className="font-medium text-slate-900">{invitation.email}</p>
+                        <p className="font-medium text-slate-900 dark:text-white">{invitation.email}</p>
                         <p className="text-sm text-slate-600">
                           Invited {new Date(invitation.sentAt).toLocaleDateString()}
                         </p>
@@ -376,7 +376,7 @@ export function TeamManagement() {
                     </div>
                     <div>
                       <div className="flex items-center gap-2">
-                        <p className="font-medium text-slate-900">{member.name}</p>
+                        <p className="font-medium text-slate-900 dark:text-white">{member.name}</p>
                         {member.id === user?.id && (
                           <Badge className="bg-blue-100 text-blue-800">You</Badge>
                         )}

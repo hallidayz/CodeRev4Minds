@@ -75,7 +75,7 @@ export function CtaSection() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
               <Button
                 size="lg"
-                className="bg-white text-blue-600 hover:bg-slate-100 px-8 py-4 text-lg font-semibold"
+                className="bg-white text-blue-600 hover:bg-slate-100 dark:bg-slate-800 dark:text-white dark:hover:bg-slate-700 px-8 py-4 text-lg font-semibold"
               >
                 Start Free Trial
                 <ArrowRightIcon className="w-5 h-5 ml-2" />
@@ -83,7 +83,7 @@ export function CtaSection() {
               <Button
                 variant="outline"
                 size="lg"
-                className="border-white text-white hover:bg-white/10 px-8 py-4 text-lg font-semibold"
+                className="border-white text-white hover:bg-white/10 dark:border-slate-300 dark:text-slate-300 dark:hover:bg-slate-300/10 px-8 py-4 text-lg font-semibold"
               >
                 Schedule Demo
               </Button>

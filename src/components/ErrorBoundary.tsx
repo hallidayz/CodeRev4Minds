@@ -84,7 +84,7 @@ export class ErrorBoundary extends Component<Props, State> {
               <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-4">
                 <AlertTriangleIcon className="w-6 h-6 text-red-600" />
               </div>
-              <CardTitle className="text-xl text-slate-900">
+              <CardTitle className="text-xl text-slate-900 dark:text-white">
                 Oops! Something went wrong
               </CardTitle>
             </CardHeader>

@@ -11,7 +11,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { CodeIcon, GithubIcon, EyeIcon, EyeOffIcon, LoaderIcon } from "lucide-react";
+import { GithubIcon, EyeIcon, EyeOffIcon, LoaderIcon } from "lucide-react";
+import { Logo } from "@/components/Logo";
 import { useAuth } from "@/contexts/AuthContext";
 
 export function Login() {
@@ -52,14 +53,11 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-navy-50 to-gold-50 dark:from-slate-900 dark:to-navy-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pure-foundation to-gold-50 dark:from-executive-depth dark:to-navy-900 p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
-        <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-10 h-10 bg-authority-navy rounded-lg flex items-center justify-center">
-            <CodeIcon className="w-6 h-6 text-white" />
-          </div>
-          <span className="text-2xl font-bold">Code Rev Minds</span>
+        <div className="flex items-center justify-center mb-8">
+          <Logo size="lg" variant="default" />
         </div>
 
         <Card>
