@@ -18,6 +18,21 @@ A comprehensive React application showcasing an AI-powered code review automatio
 - **Customer Testimonials** - Social proof with success stories and case studies
 - **Call-to-Action** - Multiple conversion points with urgency elements
 
+## 🚀 Quick Start (Demo Accounts)
+
+**Want to test the app immediately?** Use these demo accounts:
+
+| Role | Email | Password | Access Level |
+|------|-------|----------|--------------|
+| **Admin** | `admin@coderev.com` | `admin123` | Full access to all features |
+| **Developer** | `developer@coderev.com` | `dev123` | Standard development access |
+| **Viewer** | `viewer@coderev.com` | `view123` | Read-only access |
+
+1. Run `npm run dev`
+2. Go to `/login`
+3. Use any account above
+4. Explore the dashboard!
+
 ### Dashboard Application
 - **Main Dashboard** - Overview with key metrics, recent activity, and quick actions
 - **Repository Management** - Complete repository listing with search, filters, and status tracking
@@ -110,6 +125,53 @@ coderev4minds-react-app/
 
 4. **Open your browser**
    Navigate to `http://localhost:5173` to view the application.
+
+## 🧪 Testing & Demo Accounts
+
+### Demo Authentication System
+
+The application includes a complete mock authentication system with pre-configured test accounts. No backend server is required - everything works locally with realistic demo data.
+
+### Test Accounts
+
+Use any of these accounts to sign in and explore the full application:
+
+#### 1. **Admin Account** (Full Access)
+- **Email**: `admin@coderev.com`
+- **Password**: `admin123`
+- **Role**: Admin
+- **Access**: Complete dashboard access, all features, user management
+- **Name**: Admin User
+
+#### 2. **Developer Account** (Standard Access)
+- **Email**: `developer@coderev.com`
+- **Password**: `dev123`
+- **Role**: Developer
+- **Access**: Dashboard, analytics, repository management, settings
+- **Name**: Sarah Developer
+
+#### 3. **Viewer Account** (Read-Only Access)
+- **Email**: `viewer@coderev.com`
+- **Password**: `view123`
+- **Role**: Viewer
+- **Access**: Dashboard overview, analytics viewing, limited settings
+- **Name**: Mike Viewer
+
+### How to Test
+
+1. **Start the application** (`npm run dev`)
+2. **Navigate to login page** (`/login`)
+3. **Use any demo account** from the list above
+4. **Explore the dashboard** with realistic mock data
+5. **Test different features** based on user role permissions
+
+### Demo Data Included
+
+- **Realistic user profiles** with avatars and organization data
+- **Mock repository data** with various programming languages
+- **Analytics charts** with sample metrics and trends
+- **Team performance data** with accuracy ratings
+- **Code review statistics** showing time savings and productivity gains
 
 ### Available Scripts
 

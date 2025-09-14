@@ -53,11 +53,13 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-pure-foundation to-gold-50 dark:from-executive-depth dark:to-navy-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex items-center justify-center mb-8">
-          <Logo size="lg" variant="default" />
+          <Link to="/">
+            <Logo size="lg" variant="default" />
+          </Link>
         </div>
 
         <Card>
@@ -140,6 +142,25 @@ export function Login() {
                 )}
               </Button>
             </form>
+
+            {/* Demo Accounts */}
+            <div className="mt-6 p-4 bg-muted rounded-lg">
+              <h3 className="text-sm font-medium text-foreground mb-3">Demo Accounts</h3>
+              <div className="space-y-2 text-xs text-muted-foreground">
+                <div className="flex justify-between">
+                  <span>Admin:</span>
+                  <span className="font-mono">admin@coderev.com / admin123</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Developer:</span>
+                  <span className="font-mono">developer@coderev.com / dev123</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Viewer:</span>
+                  <span className="font-mono">viewer@coderev.com / view123</span>
+                </div>
+              </div>
+            </div>
 
             <div className="relative">
               <div className="absolute inset-0 flex items-center">

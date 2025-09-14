@@ -24,6 +24,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
     { name: "Features", href: "#features" },
     { name: "Pricing", href: "#pricing" },
     { name: "Integrations", href: "#integrations" },
+    { name: "Comparison", href: "/comparison" },
     { name: "Customers", href: "#testimonials" },
     { name: "Docs", href: "/docs" },
   ];
@@ -33,6 +34,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
       { name: "Features", href: "#features" },
       { name: "Pricing", href: "#pricing" },
       { name: "Integrations", href: "#integrations" },
+      { name: "Comparison", href: "/comparison" },
       { name: "API Documentation", href: "/docs" },
       { name: "Changelog", href: "/changelog" },
     ],
@@ -59,17 +61,19 @@ export function LandingLayout({ children }: LandingLayoutProps) {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-slate-200 z-50">
+      <header className="fixed top-0 left-0 right-0 bg-background/95 backdrop-blur-sm border-b border-border z-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <Logo size="md" variant="default" />
+              <Link to="/">
+                <Logo size="md" variant="default" />
+              </Link>
               <Badge
                 variant="secondary"
-                className="hidden sm:inline-flex text-xs"
+                className="hidden sm:inline-flex text-xs bg-achievement-gold text-white dark:bg-achievement-gold dark:text-executive-depth"
               >
                 Beta
               </Badge>
@@ -98,7 +102,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
               >
                 <Link to="/login">Sign In</Link>
               </Button>
-              <Button className="bg-authority-navy hover:bg-navy-700" asChild>
+              <Button className="bg-authority-navy hover:bg-navy-700 dark:bg-achievement-gold dark:hover:bg-gold-600 text-white dark:text-executive-depth" asChild>
                 <Link to="/signup">
                   Start Free Trial
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
@@ -112,22 +116,22 @@ export function LandingLayout({ children }: LandingLayoutProps) {
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             >
               {mobileMenuOpen ? (
-                <XIcon className="w-6 h-6 text-slate-600" />
+                <XIcon className="w-6 h-6 text-slate-600 dark:text-slate-300" />
               ) : (
-                <MenuIcon className="w-6 h-6 text-slate-600" />
+                <MenuIcon className="w-6 h-6 text-slate-600 dark:text-slate-300" />
               )}
             </button>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-slate-200 py-4">
+            <div className="md:hidden border-t border-slate-200 dark:border-slate-700 py-4">
               <div className="space-y-4">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
                     href={item.href}
-                    className="block text-slate-600 hover:text-slate-900 font-medium"
+                    className="block text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white font-medium"
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}

@@ -112,37 +112,95 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const verifyToken = async (token: string): Promise<boolean> => {
-    try {
-      const response = await fetch('/api/auth/verify', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-        },
-      });
-      return response.ok;
-    } catch {
-      return false;
-    }
+    // For demo purposes, always return true if token exists
+    return !!token;
   };
 
   const login = async (email: string, password: string): Promise<void> => {
     try {
       setAuthState(prev => ({ ...prev, isLoading: true }));
 
-      const response = await fetch('/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // Mock authentication with test accounts
+      const testAccounts = {
+        'admin@coderev.com': {
+          password: 'admin123',
+          user: {
+            id: '1',
+            email: 'admin@coderev.com',
+            name: 'Admin User',
+            avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=32&h=32&fit=crop&crop=face',
+            role: 'admin' as const,
+            organizationId: 'org-1',
+            organizationName: 'CodeRev Demo',
+            createdAt: '2024-01-01T00:00:00Z',
+            lastLoginAt: new Date().toISOString(),
+          },
+          organization: {
+            id: 'org-1',
+            name: 'CodeRev Demo',
+            plan: 'enterprise' as const,
+            maxUsers: 100,
+            maxRepositories: 50,
+            createdAt: '2024-01-01T00:00:00Z',
+          }
         },
-        body: JSON.stringify({ email, password }),
-      });
+        'developer@coderev.com': {
+          password: 'dev123',
+          user: {
+            id: '2',
+            email: 'developer@coderev.com',
+            name: 'Sarah Developer',
+            avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=32&h=32&fit=crop&crop=face',
+            role: 'developer' as const,
+            organizationId: 'org-1',
+            organizationName: 'CodeRev Demo',
+            createdAt: '2024-01-15T00:00:00Z',
+            lastLoginAt: new Date().toISOString(),
+          },
+          organization: {
+            id: 'org-1',
+            name: 'CodeRev Demo',
+            plan: 'enterprise' as const,
+            maxUsers: 100,
+            maxRepositories: 50,
+            createdAt: '2024-01-01T00:00:00Z',
+          }
+        },
+        'viewer@coderev.com': {
+          password: 'view123',
+          user: {
+            id: '3',
+            email: 'viewer@coderev.com',
+            name: 'Mike Viewer',
+            avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=32&h=32&fit=crop&crop=face',
+            role: 'viewer' as const,
+            organizationId: 'org-1',
+            organizationName: 'CodeRev Demo',
+            createdAt: '2024-02-01T00:00:00Z',
+            lastLoginAt: new Date().toISOString(),
+          },
+          organization: {
+            id: 'org-1',
+            name: 'CodeRev Demo',
+            plan: 'enterprise' as const,
+            maxUsers: 100,
+            maxRepositories: 50,
+            createdAt: '2024-01-01T00:00:00Z',
+          }
+        }
+      };
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Login failed');
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1000));
+
+      const account = testAccounts[email as keyof typeof testAccounts];
+      
+      if (!account || account.password !== password) {
+        throw new Error('Invalid email or password');
       }
 
-      const data = await response.json();
-      const { user, organization, token } = data;
+      const token = `demo-token-${Date.now()}`;
+      const { user, organization } = account;
 
       // Store in localStorage
       localStorage.setItem('coderev4minds_token', token);
@@ -166,21 +224,34 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setAuthState(prev => ({ ...prev, isLoading: true }));
 
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
+      // Simulate API delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Signup failed');
-      }
+      // Create mock user and organization
+      const userId = `user-${Date.now()}`;
+      const orgId = `org-${Date.now()}`;
+      const token = `demo-token-${Date.now()}`;
 
-      const data = await response.json();
-      const { user, organization, token } = data;
+      const user: User = {
+        id: userId,
+        email: userData.email,
+        name: userData.name,
+        avatar: `https://images.unsplash.com/photo-${Math.floor(Math.random() * 1000) + 1472099645785}?w=32&h=32&fit=crop&crop=face`,
+        role: 'developer',
+        organizationId: orgId,
+        organizationName: userData.organizationName,
+        createdAt: new Date().toISOString(),
+        lastLoginAt: new Date().toISOString(),
+      };
+
+      const organization: Organization = {
+        id: orgId,
+        name: userData.organizationName,
+        plan: userData.teamSize === '1-10' ? 'free' : userData.teamSize === '11-50' ? 'professional' : 'enterprise',
+        maxUsers: userData.teamSize === '1-10' ? 10 : userData.teamSize === '11-50' ? 50 : 100,
+        maxRepositories: userData.teamSize === '1-10' ? 5 : userData.teamSize === '11-50' ? 25 : 50,
+        createdAt: new Date().toISOString(),
+      };
 
       // Store in localStorage
       localStorage.setItem('coderev4minds_token', token);

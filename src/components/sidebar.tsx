@@ -62,7 +62,9 @@ export function Sidebar() {
     <div className="flex h-full w-64 flex-col bg-slate-900 dark:bg-slate-950">
       {/* Logo */}
       <div className="flex h-16 items-center px-6 border-b border-slate-800 dark:border-slate-700">
-        <Logo size="md" variant="light" />
+        <Link to="/">
+          <Logo size="md" variant="light" />
+        </Link>
       </div>
 
       {/* Navigation */}

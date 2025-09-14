@@ -95,12 +95,14 @@ export function Signup() {
   ];
 
   return (
-    <div className="min-h-screen flex bg-gradient-to-br from-pure-foundation to-gold-50 dark:from-executive-depth dark:to-navy-900">
+    <div className="min-h-screen flex bg-background">
       {/* Left Side - Features */}
       <div className="hidden lg:flex lg:w-1/2 bg-authority-navy dark:bg-slate-800 text-white p-12 flex-col justify-center">
         <div className="max-w-md">
           <div className="flex items-center gap-3 mb-8">
-            <Logo size="xl" variant="light" />
+            <Link to="/">
+              <Logo size="xl" variant="default" />
+            </Link>
           </div>
 
           <h1 className="text-4xl font-bold mb-6">

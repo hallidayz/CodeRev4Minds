@@ -27,7 +27,7 @@ import { APP_CONFIG } from "@/config/app";
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-pure-foundation via-gold-50 to-success-forest/10 dark:from-executive-depth dark:via-navy-900 dark:to-slate-800 py-20 lg:py-32">
+    <section className="relative overflow-hidden bg-background py-20 lg:py-32">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
 
@@ -42,7 +42,7 @@ export function HeroSection() {
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
             Stop Losing{" "}
-            <span className="text-authority-navy">6.4 Hours Weekly</span>{" "}
+            <span className="text-achievement-gold">6.4 Hours Weekly</span>{" "}
             on Manual Code Reviews
           </h1>
 
@@ -72,12 +72,25 @@ export function HeroSection() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-            <Button size="lg" className="px-8 py-4 text-lg font-semibold bg-authority-navy hover:bg-navy-700 text-white dark:bg-authority-navy dark:hover:bg-navy-600 dark:text-white">
-              Start Free Trial
-              <ArrowRightIcon className="w-5 h-5 ml-2" />
+            <Button 
+              size="lg" 
+              className="px-8 py-4 text-lg font-semibold bg-authority-navy hover:bg-achievement-gold text-white hover:text-authority-navy dark:bg-achievement-gold dark:hover:bg-authority-navy dark:text-authority-navy dark:hover:text-white transition-all duration-300"
+              asChild
+            >
+              <a href="/signup">
+                Start Free Trial
+                <ArrowRightIcon className="w-5 h-5 ml-2" />
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="px-8 py-4 text-lg font-semibold border-authority-navy text-authority-navy hover:bg-navy-50 dark:border-white dark:text-white dark:hover:bg-white/10">
-              Watch Demo
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="px-8 py-4 text-lg font-semibold border-authority-navy text-authority-navy hover:bg-authority-navy hover:text-white dark:border-achievement-gold dark:text-achievement-gold dark:hover:bg-achievement-gold dark:hover:text-authority-navy transition-all duration-300"
+              asChild
+            >
+              <a href="/signup">
+                Watch Demo
+              </a>
             </Button>
           </div>
 

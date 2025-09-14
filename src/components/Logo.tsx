@@ -1,4 +1,3 @@
-import React from 'react';
 import { cn } from '@/lib/utils';
 
 interface LogoProps {
@@ -6,6 +5,7 @@ interface LogoProps {
   showText?: boolean;
   className?: string;
   variant?: 'light' | 'dark' | 'default';
+  onClick?: () => void;
 }
 
 const sizeClasses = {
@@ -26,7 +26,8 @@ export function Logo({
   size = 'md', 
   showText = true, 
   className,
-  variant = 'default'
+  variant = 'default',
+  onClick
 }: LogoProps) {
   // Determine which logo to use based on variant
   const logoSrc = variant === 'light' ? '/src/assets/logo-dark.png' : '/src/assets/logo.png';
@@ -43,10 +44,13 @@ export function Logo({
     return logoSvg;
   }
 
-  const textColor = variant === 'light' ? 'text-white' : variant === 'dark' ? 'text-slate-900' : 'text-slate-900';
+  const textColor = variant === 'light' ? 'text-white' : variant === 'dark' ? 'text-slate-900' : 'text-achievement-gold';
 
   return (
-    <div className={cn("flex items-center space-x-3", className)}>
+    <div 
+      className={cn("flex items-center space-x-3", onClick && "cursor-pointer", className)}
+      onClick={onClick}
+    >
       {logoSvg}
       <span className={cn("font-bold", textSizeClasses[size], textColor)}>
         Code Rev Minds

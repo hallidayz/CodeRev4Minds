@@ -26,6 +26,7 @@ import { Landing } from "@/pages/landing";
 import { Login } from "@/pages/login";
 import { Signup } from "@/pages/signup";
 import { Docs } from "@/pages/docs";
+import { Comparison } from "@/pages/comparison";
 import { Dashboard } from "@/pages/dashboard";
 import { Analytics } from "@/pages/analytics";
 import { Repositories } from "@/pages/repositories";
@@ -54,6 +55,14 @@ function App() {
             element={
               <LandingLayout>
                 <Docs />
+              </LandingLayout>
+            }
+          />
+          <Route
+            path="/comparison"
+            element={
+              <LandingLayout>
+                <Comparison />
               </LandingLayout>
             }
           />

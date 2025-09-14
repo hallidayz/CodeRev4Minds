@@ -1,4 +1,4 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { 
@@ -414,6 +414,207 @@ team:
                         <CopyIcon className="w-4 h-4" />
                       )}
                     </Button>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Integration Guide */}
+          <Card className="mb-12">
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <CodeIcon className="w-5 h-5 text-blue-600" />
+                Integration Guide
+              </CardTitle>
+              <CardDescription>
+                Step-by-step instructions for integrating CodeRev with your development workflow
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-8">
+                {/* GitHub Integration */}
+                <div className="border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <GithubIcon className="w-5 h-5" />
+                    GitHub Integration
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">1. Install CodeRev GitHub App</h4>
+                      <p className="text-slate-600 mb-3">
+                        Visit the GitHub Marketplace and install the CodeRev app to your organization or personal account.
+                      </p>
+                      <div className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>https://github.com/marketplace/coderev-minds</code>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">2. Configure Repository Access</h4>
+                      <p className="text-slate-600 mb-3">
+                        Grant CodeRev access to the repositories you want to analyze. You can select all repositories or specific ones.
+                      </p>
+                      <ul className="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Go to your repository Settings → Integrations → GitHub Apps</li>
+                        <li>Find "CodeRev Minds" and click "Configure"</li>
+                        <li>Select "All repositories" or choose specific repositories</li>
+                        <li>Click "Save" to apply changes</li>
+                      </ul>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">3. Enable Code Reviews</h4>
+                      <p className="text-slate-600 mb-3">
+                        CodeRev will automatically start analyzing pull requests. No additional configuration required.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* GitLab Integration */}
+                <div className="border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <CodeIcon className="w-5 h-5" />
+                    GitLab Integration
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">1. Create Access Token</h4>
+                      <p className="text-slate-600 mb-3">
+                        Generate a personal access token with the required permissions.
+                      </p>
+                      <ul className="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Go to GitLab → User Settings → Access Tokens</li>
+                        <li>Create a new token with these scopes: read_repository, read_api, read_user</li>
+                        <li>Copy the generated token (you won't see it again)</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">2. Add GitLab Integration</h4>
+                      <p className="text-slate-600 mb-3">
+                        Add your GitLab instance to CodeRev using the access token.
+                      </p>
+                      <div className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>{`curl -X POST https://api.coderev.com/integrations/gitlab \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "name": "My GitLab",
+    "url": "https://gitlab.com",
+    "access_token": "YOUR_GITLAB_TOKEN"
+  }'`}</code>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">3. Configure Webhooks</h4>
+                      <p className="text-slate-600 mb-3">
+                        Set up webhooks to enable real-time analysis of merge requests.
+                      </p>
+                      <ul className="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Go to Project Settings → Integrations → Webhooks</li>
+                        <li>Add webhook URL: https://api.coderev.com/webhooks/gitlab</li>
+                        <li>Select triggers: Merge request events, Push events</li>
+                        <li>Add secret token (provided in CodeRev dashboard)</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Bitbucket Integration */}
+                <div className="border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <CodeIcon className="w-5 h-5" />
+                    Bitbucket Integration
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">1. Create App Password</h4>
+                      <p className="text-slate-600 mb-3">
+                        Generate an app password with repository read permissions.
+                      </p>
+                      <ul className="list-disc list-inside text-slate-600 space-y-1">
+                        <li>Go to Bitbucket → Personal settings → App passwords</li>
+                        <li>Create new app password with "Repositories: Read" permission</li>
+                        <li>Copy the generated password</li>
+                      </ul>
+                    </div>
+                    
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">2. Connect Bitbucket Workspace</h4>
+                      <p className="text-slate-600 mb-3">
+                        Add your Bitbucket workspace to CodeRev.
+                      </p>
+                      <div className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>{`curl -X POST https://api.coderev.com/integrations/bitbucket \\
+  -H "Authorization: Bearer YOUR_API_KEY" \\
+  -H "Content-Type: application/json" \\
+  -d '{
+    "workspace": "your-workspace",
+    "username": "your-username",
+    "app_password": "YOUR_APP_PASSWORD"
+  }'`}</code>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* CI/CD Integration */}
+                <div className="border rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <CodeIcon className="w-5 h-5" />
+                    CI/CD Pipeline Integration
+                  </h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">GitHub Actions</h4>
+                      <div className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>{`name: CodeRev Analysis
+on: [pull_request]
+
+jobs:
+  coderev:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run CodeRev Analysis
+        uses: coderev/action@v1
+        with:
+          api-key: \${{ secrets.CODEREV_API_KEY }}
+          fail-on-issues: false`}</code>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">GitLab CI</h4>
+                      <div className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>{`coderev_analysis:
+  stage: test
+  image: coderev/analyzer:latest
+  script:
+    - coderev analyze --api-key $CODEREV_API_KEY
+  only:
+    - merge_requests`}</code>
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="font-medium text-slate-900 dark:text-white mb-2">Jenkins Pipeline</h4>
+                      <div className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto text-sm">
+                        <code>{`pipeline {
+  agent any
+  stages {
+    stage('CodeRev Analysis') {
+      steps {
+        sh 'docker run --rm -v $(pwd):/workspace coderev/analyzer:latest analyze --api-key $CODEREV_API_KEY'
+      }
+    }
+  }
+}`}</code>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
