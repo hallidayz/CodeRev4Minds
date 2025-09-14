@@ -59,14 +59,14 @@ export function Sidebar() {
   });
 
   return (
-    <div className="flex h-full w-64 flex-col bg-slate-900">
+    <div className="flex h-full w-64 flex-col bg-slate-900 dark:bg-slate-950">
       {/* Logo */}
-      <div className="flex h-16 items-center px-6 border-b border-slate-800">
+      <div className="flex h-16 items-center px-6 border-b border-slate-800 dark:border-slate-700">
         <div className="flex items-center space-x-3">
-          <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div className="w-8 h-8 bg-authority-navy rounded-lg flex items-center justify-center">
             <BrainIcon className="w-5 h-5 text-white" />
           </div>
-          <span className="text-xl font-bold text-white">CodeRev4Minds</span>
+          <span className="text-xl font-bold text-white">Code Rev Minds</span>
         </div>
       </div>
 

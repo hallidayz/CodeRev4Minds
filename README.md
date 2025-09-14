@@ -1,4 +1,9 @@
-# CodeRev4Minds - AI-Powered Code Review Automation Tool
+# Code Rev Minds - AI-Powered Code Review Automation Tool
+
+**PROPRIETARY SOFTWARE - AC MiNDS, LLC**  
+**Copyright (c) 2024 AC MiNDS, LLC. All rights reserved.**
+
+*This software is proprietary and confidential. Unauthorized copying, distribution, or modification is strictly prohibited.*
 
 A comprehensive React application showcasing an AI-powered code review automation platform that helps engineering teams save 6.4 hours weekly while maintaining 95% accuracy and reducing false positives to under 5%.
 
@@ -218,7 +223,19 @@ This application demonstrates a complete SaaS product with:
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+**PROPRIETARY SOFTWARE LICENSE**
+
+This software is proprietary to AC MiNDS, LLC and is protected by copyright laws and international treaties. 
+
+**RESTRICTIONS:**
+- No copying, modification, or distribution without written permission
+- No reverse engineering or decompilation
+- No commercial use without license agreement
+- All rights reserved
+
+For licensing inquiries, contact: legal@acminds.com
+
+See the LICENSE file for complete terms and conditions.
 
 ## 🆘 Support
 

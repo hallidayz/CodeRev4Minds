@@ -52,14 +52,14 @@ export function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-navy-50 to-gold-50 dark:from-slate-900 dark:to-navy-900 p-4">
       <div className="w-full max-w-md">
         {/* Logo */}
         <div className="flex items-center justify-center gap-2 mb-8">
-          <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
+          <div className="w-10 h-10 bg-authority-navy rounded-lg flex items-center justify-center">
             <CodeIcon className="w-6 h-6 text-white" />
           </div>
-          <span className="text-2xl font-bold">CodeRev4Minds</span>
+          <span className="text-2xl font-bold">Code Rev Minds</span>
         </div>
 
         <Card>

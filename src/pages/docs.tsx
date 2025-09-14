@@ -67,31 +67,31 @@ export function Docs() {
       step: 1,
       title: "Install CLI Tool",
       description: "Install our command-line interface to get started",
-      code: "npm install -g @coderev4minds/cli"
+      code: "npm install -g @code-rev-minds/cli"
     },
     {
       step: 2,
       title: "Authenticate",
-      description: "Login with your CodeRev4Minds account",
-      code: "coderev4minds login"
+      description: "Login with your Code Rev Minds account",
+      code: "code-rev-minds login"
     },
     {
       step: 3,
       title: "Connect Repository",
       description: "Link your GitHub/GitLab repository",
-      code: "coderev4minds connect --repo owner/repo-name"
+      code: "code-rev-minds connect --repo owner/repo-name"
     },
     {
       step: 4,
       title: "Configure Rules",
       description: "Set up your custom review rules",
-      code: "coderev4minds rules --file .coderev4minds.yml"
+      code: "code-rev-minds rules --file .code-rev-minds.yml"
     },
     {
       step: 5,
       title: "Start Scanning",
       description: "Begin automated code reviews",
-      code: "coderev4minds scan --auto"
+      code: "code-rev-minds scan --auto"
     }
   ];
 
@@ -113,7 +113,7 @@ export function Docs() {
   },
   "repository": {
     "full_name": "owner/repo",
-    "clone_url": "https://github.com/owner/repo.git"
+   "clone_url": "ttps://github.com/owner/repo.git"
   }
 }`
     },
@@ -151,7 +151,7 @@ export function Docs() {
               <h1 className="text-4xl font-bold text-slate-900">Documentation</h1>
             </div>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Everything you need to integrate CodeRev4Minds into your development workflow
+              Everything you need to integrate Code Rev Minds into your development workflow
             </p>
           </div>
 
@@ -366,10 +366,10 @@ export function Docs() {
             <CardContent>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-lg font-semibold mb-3">.coderev4minds.yml</h3>
+                  <h3 className="text-lg font-semibold mb-3">.code-rev-minds.yml</h3>
                   <div className="relative">
                     <pre className="bg-slate-900 text-green-400 p-4 rounded-lg overflow-x-auto">
-                      <code>{`# CodeRev4Minds Configuration
+                      <code>{`# Code Rev Minds Configuration
 repositories:
   - name: "frontend-app"
     path: "./src"

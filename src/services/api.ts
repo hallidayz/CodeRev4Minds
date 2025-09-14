@@ -1,4 +1,23 @@
+/**
+ * CodeRev4Minds - AI-Powered Code Review Automation Tool
+ * 
+ * PROPRIETARY SOFTWARE - AC MiNDS, LLC
+ * Copyright (c) 2024 AC MiNDS, LLC. All rights reserved.
+ * 
+ * This software is proprietary and confidential. Unauthorized copying, 
+ * distribution, or modification is strictly prohibited.
+ * 
+ * For licensing inquiries: legal@acminds.com
+ * 
+ * @file api.ts
+ * @description API service layer for backend communication
+ * @author AC MiNDS, LLC
+ * @version 1.0.0
+ */
+
 import { useAuth } from '@/contexts/AuthContext';
+import { logger, useLogger } from '@/lib/logger';
+import { errorHandler, createApiError, createNetworkError, ApiError } from '@/lib/errorHandler';
 
 // API Configuration
 const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001/api';
@@ -20,12 +39,6 @@ export interface PaginatedResponse<T> {
     total: number;
     totalPages: number;
   };
-}
-
-export interface ApiError {
-  message: string;
-  code?: string;
-  details?: any;
 }
 
 // API Client Class
@@ -84,26 +97,29 @@ export class ApiClient {
 
       return response.json();
     } catch (error) {
+      logger.error('Network error occurred', error as Error, { url, method: options.method || 'GET' }, 'ApiClient');
       if (error instanceof Error) {
         throw error;
       }
-      throw new Error('Network error occurred');
+      throw createNetworkError('Network error occurred', undefined, url, options.method || 'GET');
     }
   }
 
   private async handleError(response: Response): Promise<ApiError> {
     try {
       const errorData = await response.json();
-      return {
-        message: errorData.message || `HTTP ${response.status}`,
-        code: errorData.code,
-        details: errorData.details,
-      };
+      return createApiError(
+        errorData.message || `HTTP ${response.status}`,
+        errorData.code,
+        response.status,
+        errorData.details
+      );
     } catch {
-      return {
-        message: `HTTP ${response.status}: ${response.statusText}`,
-        code: response.status.toString(),
-      };
+      return createApiError(
+        `HTTP ${response.status}: ${response.statusText}`,
+        response.status.toString(),
+        response.status
+      );
     }
   }
 
@@ -392,12 +408,17 @@ export const apiClient = new ApiClient();
 
 // Custom hook for API calls with error handling
 export function useApi() {
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+  const logger = useLogger('useApi', user?.id);
 
-  const handleApiError = (error: any) => {
-    console.error('API Error:', error);
+  const handleApiError = (error: Error | ApiError) => {
+    logger.error('API Error occurred', error as Error, { 
+      errorType: error.name,
+      errorCode: (error as ApiError).code,
+      errorStatus: (error as ApiError).status
+    });
     
-    if (error.message?.includes('Authentication failed') || error.code === '401') {
+    if (error.message?.includes('Authentication failed') || (error as ApiError).code === '401') {
       logout();
     }
     
@@ -408,7 +429,7 @@ export function useApi() {
     try {
       return await apiFunction();
     } catch (error) {
-      handleApiError(error);
+      handleApiError(error as Error);
       throw error;
     }
   };

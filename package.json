@@ -1,14 +1,19 @@
 {
-  "name": "coderev4minds-react-app",
+  "name": "code-rev-minds-react-app",
   "version": "1.0.0",
   "description": "AI-powered code review automation tool - Complete React application",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "build": "NODE_ENV=production tsc && vite build",
+    "build:prod": "chmod +x scripts/build-production.sh && ./scripts/build-production.sh",
+    "preview": "NODE_ENV=production vite preview --https",
+    "start": "NODE_ENV=production vite preview --https --port 3000",
+    "test:build": "node scripts/test-production.js",
+    "test:production": "npm run build && npm run test:build && npm run preview",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -49,6 +54,8 @@
     "typescript",
     "saas"
   ],
-  "author": "CodeRev4Minds Team",
-  "license": "MIT"
+  "author": "AC MiNDS, LLC",
+  "license": "PROPRIETARY",
+  "copyright": "Copyright (c) 2024 AC MiNDS, LLC. All rights reserved.",
+  "private": true
 }

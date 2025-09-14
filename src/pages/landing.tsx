@@ -1,3 +1,20 @@
+/**
+ * CodeRev4Minds - AI-Powered Code Review Automation Tool
+ * 
+ * PROPRIETARY SOFTWARE - AC MiNDS, LLC
+ * Copyright (c) 2024 AC MiNDS, LLC. All rights reserved.
+ * 
+ * This software is proprietary and confidential. Unauthorized copying, 
+ * distribution, or modification is strictly prohibited.
+ * 
+ * For licensing inquiries: legal@acminds.com
+ * 
+ * @file landing.tsx
+ * @description Main landing page component
+ * @author AC MiNDS, LLC
+ * @version 1.0.0
+ */
+
 import { HeroSection } from "@/components/hero-section";
 import { StatsSection } from "@/components/stats-section";
 import { FeaturesSection } from "@/components/features-section";

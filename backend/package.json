@@ -1,11 +1,13 @@
 {
-  "name": "coderev4minds-backend",
+  "name": "code-rev-minds-backend",
   "version": "1.0.0",
-  "description": "Backend API for CodeRev4Minds - AI-powered code review automation",
+  "description": "Backend API for Code Rev Minds - AI-powered code review automation",
   "main": "src/server.js",
   "scripts": {
-    "start": "node src/server.js",
-    "dev": "nodemon src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
+    "start:https": "NODE_ENV=production USE_HTTPS=true node src/server.js",
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "dev:https": "NODE_ENV=development USE_HTTPS=true nodemon src/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint": "eslint src/",
@@ -21,8 +23,10 @@
     "gitlab",
     "api"
   ],
-  "author": "CodeRev4Minds Team",
-  "license": "MIT",
+  "author": "AC MiNDS, LLC",
+  "license": "PROPRIETARY",
+  "copyright": "Copyright (c) 2024 AC MiNDS, LLC. All rights reserved.",
+  "private": true,
   "dependencies": {
     "express": "^4.18.2",
     "cors": "^2.8.5",

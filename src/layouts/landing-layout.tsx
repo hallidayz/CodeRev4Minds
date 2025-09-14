@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { ThemeToggle } from "@/contexts/ThemeContext";
 import {
   BrainIcon,
   MenuIcon,
@@ -65,10 +66,10 @@ export function LandingLayout({ children }: LandingLayoutProps) {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-authority-navy rounded-lg flex items-center justify-center">
                 <BrainIcon className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold text-slate-900">CodeRev4Minds</span>
+              <span className="text-xl font-bold text-slate-900">Code Rev Minds</span>
               <Badge
                 variant="secondary"
                 className="hidden sm:inline-flex text-xs"
@@ -83,7 +84,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-slate-600 hover:text-slate-900 font-medium transition-colors"
+                  className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white font-medium transition-colors"
                 >
                   {item.name}
                 </a>
@@ -92,14 +93,15 @@ export function LandingLayout({ children }: LandingLayoutProps) {
 
             {/* Desktop CTA */}
             <div className="hidden md:flex items-center space-x-4">
+              <ThemeToggle />
               <Button
                 variant="ghost"
-                className="text-slate-600 hover:text-slate-900"
+                className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
                 asChild
               >
                 <Link to="/login">Sign In</Link>
               </Button>
-              <Button className="bg-blue-600 hover:bg-blue-700" asChild>
+              <Button className="bg-authority-navy hover:bg-navy-700" asChild>
                 <Link to="/signup">
                   Start Free Trial
                   <ArrowRightIcon className="w-4 h-4 ml-2" />
@@ -158,10 +160,10 @@ export function LandingLayout({ children }: LandingLayoutProps) {
             {/* Company Info */}
             <div className="lg:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-authority-navy rounded-lg flex items-center justify-center">
                   <BrainIcon className="w-5 h-5 text-white" />
                 </div>
-                <span className="text-xl font-bold">CodeRev4Minds</span>
+                <span className="text-xl font-bold">Code Rev Minds</span>
               </div>
               <p className="text-slate-400 mb-6 max-w-sm">
                 AI-powered code review automation that saves engineering teams
@@ -261,7 +263,7 @@ export function LandingLayout({ children }: LandingLayoutProps) {
           {/* Bottom Bar */}
           <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
             <p className="text-slate-400 text-sm">
-              © 2024 CodeRev4Minds. All rights reserved.
+              © 2024 Code Rev Minds. All rights reserved.
             </p>
             <div className="flex items-center space-x-6 mt-4 md:mt-0">
               <Badge

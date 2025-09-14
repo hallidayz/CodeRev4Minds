@@ -1,9 +1,28 @@
+/**
+ * CodeRev4Minds - AI-Powered Code Review Automation Tool
+ * 
+ * PROPRIETARY SOFTWARE - AC MiNDS, LLC
+ * Copyright (c) 2024 AC MiNDS, LLC. All rights reserved.
+ * 
+ * This software is proprietary and confidential. Unauthorized copying, 
+ * distribution, or modification is strictly prohibited.
+ * 
+ * For licensing inquiries: legal@acminds.com
+ * 
+ * @file server.js
+ * @description Main backend server application
+ * @author AC MiNDS, LLC
+ * @version 1.0.0
+ */
+
 const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const compression = require('compression');
 const rateLimit = require('express-rate-limit');
+const https = require('https');
+const fs = require('fs');
 require('dotenv').config();
 
 const authRoutes = require('./routes/auth');
@@ -24,9 +43,25 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Security middleware
-app.use(helmet());
+app.use(helmet({
+  hsts: {
+    maxAge: 31536000,
+    includeSubDomains: true,
+    preload: true
+  }
+}));
+
+// Force HTTPS in production
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV === 'production' && req.header('x-forwarded-proto') !== 'https') {
+    res.redirect(`https://${req.header('host')}${req.url}`);
+    return;
+  }
+  next();
+});
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+  origin: process.env.FRONTEND_URL || (process.env.NODE_ENV === 'production' ? 'https://localhost:5173' : 'http://localhost:5173'),
   credentials: true
 }));
 
@@ -76,11 +111,39 @@ async function startServer() {
     await connectDatabase();
     logger.info('Database connected successfully');
 
-    // Start HTTP server
-    const server = app.listen(PORT, () => {
-      logger.info(`Server running on port ${PORT}`);
-      logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
-    });
+    let server;
+    const useHttps = process.env.NODE_ENV === 'production' || process.env.USE_HTTPS === 'true';
+
+    if (useHttps) {
+      // Try to load SSL certificates for HTTPS
+      try {
+        const privateKey = fs.readFileSync('ssl/private-key.pem', 'utf8');
+        const certificate = fs.readFileSync('ssl/certificate.pem', 'utf8');
+        
+        const httpsOptions = {
+          key: privateKey,
+          cert: certificate
+        };
+        
+        server = https.createServer(httpsOptions, app);
+        server.listen(PORT, () => {
+          logger.info(`🔒 HTTPS Server running securely on port ${PORT}`);
+          logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+        });
+      } catch (error) {
+        logger.warn('SSL certificates not found, falling back to HTTP');
+        server = app.listen(PORT, () => {
+          logger.info(`🚀 HTTP Server running on port ${PORT}`);
+          logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+        });
+      }
+    } else {
+      // Start HTTP server for development
+      server = app.listen(PORT, () => {
+        logger.info(`🚀 HTTP Server running on port ${PORT}`);
+        logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+      });
+    }
 
     // Setup WebSocket server
     setupWebSocket(server);
