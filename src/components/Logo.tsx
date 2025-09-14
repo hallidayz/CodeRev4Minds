@@ -29,7 +29,7 @@ export function Logo({
   variant = 'default'
 }: LogoProps) {
   // Determine which logo to use based on variant
-  const logoSrc = variant === 'light' ? '/src/assets/logo-dark.svg' : '/src/assets/logo.svg';
+  const logoSrc = variant === 'light' ? '/src/assets/logo-dark.png' : '/src/assets/logo.png';
   
   const logoSvg = (
     <img 
