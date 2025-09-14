@@ -1,4 +1,4 @@
-import { lazy, ComponentType, memo } from 'react';
+import React, { lazy, ComponentType, memo } from 'react';
 import { APP_CONFIG } from '@/config/app';
 
 // Lazy loading utility
@@ -9,16 +9,8 @@ export function createLazyComponent<T extends ComponentType<any>>(
   const LazyComponent = lazy(importFunc);
   
   if (fallback) {
-    LazyComponent.displayName = `Lazy(${LazyComponent.displayName || 'Component'})`;
     return LazyComponent;
   }
-
-  // Default loading fallback
-  const DefaultFallback = () => (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-    </div>
-  );
 
   return LazyComponent;
 }
@@ -28,7 +20,7 @@ export function createMemoizedComponent<T extends ComponentType<any>>(
   Component: T,
   areEqual?: (prevProps: any, nextProps: any) => boolean
 ): T {
-  const MemoizedComponent = memo(Component, areEqual) as T;
+  const MemoizedComponent = memo(Component, areEqual) as unknown as T;
   MemoizedComponent.displayName = `Memo(${Component.displayName || Component.name})`;
   return MemoizedComponent;
 }
@@ -156,7 +148,7 @@ export function debounce<T extends (...args: any[]) => any>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout;
+  let timeout: ReturnType<typeof setTimeout>;
   
   return (...args: Parameters<T>) => {
     clearTimeout(timeout);

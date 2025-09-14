@@ -21,7 +21,7 @@ export interface LogEntry {
 }
 
 class Logger {
-  private isDevelopment = import.meta.env.DEV;
+  private isDevelopment = (import.meta as any).env?.DEV;
 
   private formatLogEntry(entry: LogEntry): string {
     const baseEntry = {

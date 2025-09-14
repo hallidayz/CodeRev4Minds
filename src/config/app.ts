@@ -7,8 +7,8 @@ export const APP_CONFIG = {
   
   // API configuration
   api: {
-    baseUrl: import.meta.env.VITE_API_URL || 'http://localhost:3001/api',
-    wsUrl: import.meta.env.VITE_WS_URL || 'ws://localhost:3001',
+    baseUrl: (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001/api',
+    wsUrl: (import.meta as any).env?.VITE_WS_URL || 'ws://localhost:3001',
     timeout: 30000, // 30 seconds
     retryAttempts: 3,
   },
@@ -75,7 +75,7 @@ export const APP_CONFIG = {
 
   // Logging configuration
   logging: {
-    level: import.meta.env.DEV ? 'debug' : 'info',
+    level: (import.meta as any).env?.DEV ? 'debug' : 'info',
     enableConsole: true,
     enableLocalStorage: true,
     maxLogs: 100,

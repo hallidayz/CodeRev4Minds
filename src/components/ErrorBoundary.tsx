@@ -1,6 +1,6 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
 import { logger } from '@/lib/logger';
-import { APP_CONFIG } from '@/config/app';
+// import { APP_CONFIG } from '@/config/app';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AlertTriangleIcon, RefreshCwIcon, HomeIcon } from 'lucide-react';
@@ -42,7 +42,7 @@ export class ErrorBoundary extends Component<Props, State> {
       component: 'ErrorBoundary',
       errorInfo: {
         componentStack: errorInfo.componentStack,
-        errorBoundary: errorInfo.errorBoundary,
+        errorBoundary: 'ErrorBoundary',
       }
     });
 
@@ -93,7 +93,7 @@ export class ErrorBoundary extends Component<Props, State> {
                 We're sorry, but something unexpected happened. Our team has been notified and is working to fix it.
               </p>
               
-              {import.meta.env.DEV && this.state.error && (
+              {(import.meta as any).env?.DEV && this.state.error && (
                 <details className="text-left bg-slate-100 p-3 rounded-lg">
                   <summary className="cursor-pointer font-medium text-slate-700 mb-2">
                     Error Details (Development)

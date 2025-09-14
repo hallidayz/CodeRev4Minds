@@ -116,7 +116,7 @@ export class ErrorHandler {
     }
   }
 
-  private handleApiError(error: ApiError, context: any): void {
+  private handleApiError(error: ApiError, _context: any): void {
     // Handle API-specific errors
     if (error.status === 401) {
       // Unauthorized - redirect to login
@@ -124,7 +124,7 @@ export class ErrorHandler {
     } else if (error.status === 403) {
       // Forbidden - show access denied
       this.showAccessDenied();
-    } else if (error.status >= 500) {
+    } else if (error.status && error.status >= 500) {
       // Server error - show generic error message
       this.showServerError();
     } else {
@@ -133,17 +133,17 @@ export class ErrorHandler {
     }
   }
 
-  private handleValidationError(error: ValidationError, context: any): void {
+  private handleValidationError(error: ValidationError, _context: any): void {
     // Handle validation errors
     this.showValidationError(error.message, error.field);
   }
 
-  private handleNetworkError(error: NetworkError, context: any): void {
+  private handleNetworkError(_error: NetworkError, _context: any): void {
     // Handle network errors
     this.showNetworkError();
   }
 
-  private handleGenericError(error: Error, context: any): void {
+  private handleGenericError(_error: Error, _context: any): void {
     // Handle generic errors
     this.showErrorMessage('An unexpected error occurred. Please try again.');
   }

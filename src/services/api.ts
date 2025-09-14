@@ -17,7 +17,7 @@
 
 import { useAuth } from '@/contexts/AuthContext';
 import { logger, useLogger } from '@/lib/logger';
-import { errorHandler, createApiError, createNetworkError, ApiError } from '@/lib/errorHandler';
+import { createApiError, createNetworkError, ApiError } from '@/lib/errorHandler';
 
 // API Configuration
 const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001/api';
